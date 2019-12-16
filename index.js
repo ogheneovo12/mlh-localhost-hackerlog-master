@@ -1,4 +1,5 @@
 const express = require('express');
+const config = require("./config")
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const moment = require('moment');
@@ -14,7 +15,7 @@ app.use(bodyParser.json());
 // Get env variables
 const port = process.env.PORT || 3000;
 const perPage = process.env.PAGE_SIZE || 10;
-const mongoUrl = process.env.MONGODB_URI;
+const mongoUrl = process.env.MONGODB_URI || config.db;
 const defaultPassword = process.env.HACKERLOG_PASSWORD || 'P@ssw0rd!';
 
 // Create post schema
