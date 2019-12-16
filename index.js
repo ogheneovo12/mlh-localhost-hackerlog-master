@@ -1,5 +1,5 @@
 const express = require('express');
-const config = require("./config")
+// config = require("./config")
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const moment = require('moment');
