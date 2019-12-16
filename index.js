@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 // Get env variables
 const port = process.env.PORT || 3000;
 const perPage = process.env.PAGE_SIZE || 10;
-const mongoUrl = process.env.MONGODB_URI || 'mongodb://hackerlog:GQEBrddkbf59ULuVGTZD43tevpSJ01pQnd7VTv8aSkheP9dbeoorOkEw8ejFdL25iDqVWuZ7DB4kvst3BieZcQ==@hackerlog.documents.azure.com:10255/hackerlog?ssl=true';
+const mongoUrl = process.env.MONGODB_URI || 'mongodb://mlhhack:XXLadPABnsV00qBjscKbjpODGHidwvM7owXi4wJOiRsYXGu1m6Y7218yqsBgwpNXun19n7lfwEw6SE7tliLUJA==@mlhhack.documents.azure.com:10255/admin?ssl=true&replicaSet=globaldb';
 const defaultPassword = process.env.HACKERLOG_PASSWORD || 'P@ssw0rd!';
 
 // Create post schema
@@ -28,6 +28,7 @@ const Update = mongoose.model('update', updateSchema);
 
 // Routes
 app.get('/', (req, res) => {
+  console.log(req.query)
   const page = Math.max(0, req.query.page);
   const wrongPassword = req.query.wrongPassword;
   Update.find().limit(perPage).skip(perPage * page).sort({ createdAt: 'desc' }).exec().then((updates) => {
@@ -43,19 +44,19 @@ app.get('/', (req, res) => {
 });
 
 // Posting update
-app.method('where', (paramOne, paramTwo) => {
+app.post('/update', (req, res) => {
   const { body: { name, update, password } } = req;
   if (!name || !update) {
     res.redirect('/error');
-  } else if () {
+  } else if (password === defaultPassword) {
     const userUpdate = new Update({ name, update });
     userUpdate.save().then(() => {
-      // do a redirect here
+      res.redirect('/');
     }).catch(() => {
-      // do a redirect here
+     res.redirect('/error');
     });
   } else {
-    // do a redirect here
+    res.redirect('/?wrongPassword=true');
   }
 });
 
