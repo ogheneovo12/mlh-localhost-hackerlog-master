@@ -1,5 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
+# db url is hidden in config
+ config.js
 # Logs
 logs
 *.log
@@ -169,5 +171,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
  
- # db url is hidden in config
- config.js
+
