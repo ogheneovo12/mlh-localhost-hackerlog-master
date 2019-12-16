@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 // Get env variables
 const port = process.env.PORT || 3000;
 const perPage = process.env.PAGE_SIZE || 10;
-const mongoUrl = process.env.MONGODB_URI || 'mongodb://mlhhack:XXLadPABnsV00qBjscKbjpODGHidwvM7owXi4wJOiRsYXGu1m6Y7218yqsBgwpNXun19n7lfwEw6SE7tliLUJA==@mlhhack.documents.azure.com:10255/admin?ssl=true&replicaSet=globaldb';
+const mongoUrl = process.env.MONGODB_URI;
 const defaultPassword = process.env.HACKERLOG_PASSWORD || 'P@ssw0rd!';
 
 // Create post schema
