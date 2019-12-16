@@ -170,4 +170,4 @@ $RECYCLE.BIN/
 *.lnk
  
  # db url is hidden in config
- ./config.js
+ config.js
